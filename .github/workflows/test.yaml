@@ -6,6 +6,16 @@ name: Basic change testing
 
 
 on:
+  # This GitHub workflow applies to all repositories of the AWS BU at evoila, including itself
+  pull_request:
+    types:
+      # A pull request was created
+      - opened
+      # A previously closed pull request was reopened.
+      - reopened
+      # A pull request's head branch was updated.
+      # For example, the head branch was updated from the base branch, new commits were pushed to the head branch, or the base branch was changed.
+      - synchronize
   workflow_call:
 
 
