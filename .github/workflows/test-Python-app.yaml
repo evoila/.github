@@ -8,3 +8,48 @@ on:
 
 
 jobs:
+
+  Flake8:
+    name: Lint Python code with Flake8
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Check out branch proposed for merging
+        uses: actions/checkout@v3
+        with:
+          # This job does not require git history
+          fetch-depth: 1
+      -
+        name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          cache: pipenv
+          python-version-file: .python-version
+      -
+        name: Install Pipenv
+        run: >-
+          pip
+          --verbose
+          install
+          --progress-bar=off
+          --
+          pipenv
+      -
+        name: Install development dependencies
+        run: >-
+          pipenv
+          --verbose
+          install
+          --dev
+      -
+        name: Lint Python code with Flake8
+        # Project settings for Flake8 may be specified in each project's configuration file, .flake8
+        run: >-
+          pipenv
+          --verbose
+          run
+          --
+          flake8
+          --verbose
