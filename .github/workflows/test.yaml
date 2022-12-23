@@ -10,3 +10,22 @@ on:
 
 
 jobs:
+
+  # Reasoning for inclusion in the common workflow:
+  # All projects have or should have some Markdown content (README.md).
+  markdown-lint:
+    name: Lint Markdown content
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Check out pertinent branch
+        uses: actions/checkout@v3
+        with:
+          # This job does not require git history
+          fetch-depth: 1
+      -
+        name: Lint Markdown content
+        # All settings are in .markdownlint-cli2.yaml files
+        uses: DavidAnson/markdownlint-cli2-action@v8
