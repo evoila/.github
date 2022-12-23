@@ -138,12 +138,14 @@ jobs:
           --dev
       -
         name: Analyze Python code with Pylint
+        # With --jobs=0, Pylint works in parallel with as many threads as processors in the system
         run: >-
           pipenv
           --verbose
           run
           --
           pylint
+          --jobs=0
           --recursive=yes
           --verbose
           --
