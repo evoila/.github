@@ -8,3 +8,7 @@ on:
 
 
 jobs:
+
+  # CDK apps written in Python are Python apps and can be tested like any other Python app
+  test-Python-app:
+    uses: ./.github/workflows/test-Python-app.yaml
