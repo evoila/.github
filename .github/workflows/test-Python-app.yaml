@@ -54,6 +54,53 @@ jobs:
           flake8
           --verbose
 
+  Pylint:
+    name: Analyze Python code with Pylint
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Check out corresponding git branch
+        uses: actions/checkout@v3
+        with:
+          # This job does not require git history
+          fetch-depth: 1
+      -
+        name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          cache: pipenv
+          python-version-file: .python-version
+      -
+        name: Install Pipenv
+        run: >-
+          pip
+          --verbose
+          install
+          --progress-bar=off
+          --
+          pipenv
+      -
+        name: Install development dependencies
+        run: >-
+          pipenv
+          --verbose
+          install
+          --dev
+      -
+        name: Analyze Python code with Pylint
+        run: >-
+          pipenv
+          --verbose
+          run
+          --
+          pylint
+          --recursive=yes
+          --verbose
+          --
+          .
+
   pytest:
     name: Test Python code with pytest
     permissions:
