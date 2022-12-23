@@ -1,0 +1,12 @@
+---
+
+# GitHub workflow to test changes (as in pull requests) on any repository of the AWS BU at evoila
+
+name: Basic change testing
+
+
+on:
+  workflow_call:
+
+
+jobs:
