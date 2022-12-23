@@ -1,0 +1,10 @@
+---
+
+name: Python app change testing
+
+
+on:
+  workflow_call:
+
+
+jobs:
