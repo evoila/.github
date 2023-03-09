@@ -1,0 +1,24 @@
+---
+
+name: AWS CDK Python app change testing
+
+
+# Without quotes, this key could be parsed as the boolean true value instead of the string "on"
+'on':
+  pull_request:
+    types:
+      # A pull request was created
+      - opened
+      # A previously closed pull request was reopened
+      - reopened
+      # A pull request's head branch was updated
+      - synchronize
+
+
+jobs:
+
+  test-Python:
+    uses: evoila/GitHub-Actions/.github/workflows/test-Python.yaml@v1
+
+  test-AWS-CDK-Python-app:
+    uses: evoila/GitHub-Actions/.github/workflows/test-AWS-CDK-Python-app.yaml@v1
