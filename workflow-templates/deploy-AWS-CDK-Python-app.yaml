@@ -1,0 +1,17 @@
+---
+
+name: AWS CDK Python app deployment
+
+
+# Without quotes, this key could be parsed as the boolean true value instead of the string "on"
+'on':
+  push:
+    # foo the bar
+    branches:
+      - $default-branch
+
+
+jobs:
+
+  deploy-AWS-CDK-Python-app:
+    uses: evoila/GitHub-Actions/.github/workflows/deploy-AWS-CDK-Python-app.yaml@v1
