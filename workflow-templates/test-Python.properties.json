@@ -1,0 +1,10 @@
+{
+	"name": "Python change testing",
+	"description": "GitHub workflow to test changes to Python code proposed in pull requests",
+	"categories": [
+		"continuous-integration"
+	],
+	"filePatterns": [
+		".*\\.py$"
+	]
+}
